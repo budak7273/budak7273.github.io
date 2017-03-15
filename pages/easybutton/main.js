@@ -10,6 +10,6 @@ function sleep(ms) {
 }
 
 var buttonEasy = document.getElementById("easy");
-await sleep(2000);
+//await sleep(2000);
 alert("done waiting");
 buttonEasy.onclick = playThatWasEasy();
