@@ -5,11 +5,19 @@ function playThatWasEasy()
     alert("played");
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+//var easyButton = $("#easy");
+$("#easy").on("click", playThatWasEasy);
+
+
+//var buttonEasy = document.getElementById("easy");
+//alert("done waiting");
+//buttonEasy.onclick = playThatWasEasy();
+
+
+
+/*function sayThatWasEasy() {
+  var thatWasEasy = new Audio("that_was_easy.mp3");
+  thatWasEasy.play();
 }
 
-var buttonEasy = document.getElementById("easy");
-//await sleep(2000);
-alert("done waiting");
-buttonEasy.onclick = playThatWasEasy();
+$("#easy").on("click", sayThatWasEasy);*/
