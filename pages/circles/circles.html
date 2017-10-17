@@ -5,12 +5,42 @@
       <title>Circle Art</title>
   </head>
   <body>
-      <h1>Circle Art</h1>
-      <p id = "text">Press 's' to save preview.</p>
+      <center><h1>Circle Art</h1></center>
+      <ul>
+        <li><p>Press 's' to save preview.</p></li>
+        <li><p>Press Left Arrow and Right Arrow in combination with 'r', 'g', or 'b' to change color.</p></li>
+        <li><p>Press Up/Down Arrow to increase circle count.</p></li>
+        <li><p>Press Shift and Up/Down Arrow to change border weight default.</p></li>
+      </ul>
       <p></p>
+      
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l"></th>
+    <th class="tg-yw4l">Red</th>
+    <th class="tg-yw4l">Green</th>
+    <th class="tg-yw4l">Blue</th>
+    <th class="tg-yw4l">Border Weight</th>
+    <th class="tg-yw4l">Diameter Divisor</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">Start</td>
+    <td class="tg-yw4l" id="redStart">-</td>
+    <td class="tg-yw4l" id="greStart">-</td>
+    <td class="tg-yw4l" id="bluStart">-</td>
+    <td class="tg-yw4l" id="brdStart">-</td>
+    <td class="tg-yw4l" id="diaStart">-</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">Shift</td>
+    <td class="tg-yw4l" id="redShift">-</td>
+    <td class="tg-yw4l" id="greShift">-</td>
+    <td class="tg-yw4l" id="bluShift">-</td>
+    <td class="tg-yw4l" id="brdShift">-</td>
+    <td class="tg-yw4l" id="diaShift">-</td>
+  </tr>
+</table>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.12/p5.js"></script>
       <script src="main.js"></script>
-      
-      
   </body>
 </html>
