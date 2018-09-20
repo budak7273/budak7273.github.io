@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html <!--style="background-color: #D3D3D3;"-->
+  <head>
+    <title>Gaming Club Scoreboard</title>
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|VT323" rel="stylesheet">
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script>
+	<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>-->
+	<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+	
+	<script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+	
+	<!--<script>
+	  // Initialize Firebase
+	  var config = {
+		apiKey: "AIzaSyAReBR16X7iW7h-fHutiC_5on66_vhKKQM",
+		authDomain: "mobileappsscoreboard.firebaseapp.com",
+		databaseURL: "https://mobileappsscoreboard.firebaseio.com",
+		projectId: "mobileappsscoreboard",
+		storageBucket: "mobileappsscoreboard.appspot.com",
+		messagingSenderId: "173914236267"
+	  };
+	  firebase.initializeApp(config);
+	</script> -->
+	<script src="firebasestuff.js" language="javascript"></script>
+  </head>
+  <body>
+    <div id="content">
+      <center>
+        <table>
+          <tr>
+            <td><span id="lblInputType">Scoreboard</span></td>
+            <!--<td><input type="text" id="testTotal" style="width: 40px; font-size: 20px;"></td>-->
+          </tr>
+
+        </table>
+        <span id="lblInputType2"><center><i>This scoreboard auto-updates.</i></center></span>
+        <!--<div class="button"><div class="buttonInner">Refresh</div></div>-->
+      </center>
+      <center>
+        <table>
+          <tr>
+            <td><div class="cell">Ranking:</div></td>
+            <td><div class="cell">Name:</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">1</div></td>
+            <td><div class="cell score" id="place1">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">2</div></td>
+            <td><div class="cell score" id="place2">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">3</div></td>
+            <td><div class="cell score" id="place3">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">4</div></td>
+            <td><div class="cell score" id="place4">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">5</div></td>
+            <td><div class="cell score" id="place5">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">6</div></td>
+            <td><div class="cell score" id="place6">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">7</div></td>
+            <td><div class="cell score" id="place7">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">8</div></td>
+            <td><div class="cell score" id="place8">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">9</div></td>
+            <td><div class="cell score" id="place9">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">10</div></td>
+            <td><div class="cell score" id="place10">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">11</div></td>
+            <td><div class="cell score" id="place11">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">12</div></td>
+            <td><div class="cell score" id="place12">Error - JS did not open.</div></td>
+          </tr>
+          <tr>
+            <td><div class="cell">13</div></td>
+            <td><div class="cell score" id="place13">Error - JS did not open.</div></td>
+          </tr>
+        </table>
+      </center>
+
+      <br><br><br><br>
+    </div>
+    <div id="divider"></div>
+  </body>
+</html>

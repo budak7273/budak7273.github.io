@@ -1,0 +1,116 @@
+
+html { 
+	background-color: #D3D3D3; 
+}
+
+.link { 
+	color: #000000; 
+	text-decoration: none;
+}
+
+#title { 
+	font-family: 'VT323', monospace;
+	font-size: 55px; 
+	color: #000000;
+}
+
+#divider { 
+	background-color: #801515; 
+	position: relative; 
+	margin-left: 20px; 
+	width: 97%; 
+	height: 12px; 
+	border-radius: 2px;
+}
+
+#content{ 
+	min-height:100%; 
+	position:relative; 
+}
+
+#lblInputType {
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 28px; color:#2D2D2D 
+}
+
+#lblInputType2 { 
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 18px; 
+	color:#2D2D2D 
+}
+
+.cell { 
+	position: relative; 
+	height: 18px; 
+	width: 100%; 
+	border-radius: 2px; 
+	background-color: #801515; 
+	padding: 1px; 
+	text-align: center; 
+	font-size: 24px; 
+	font-family: 'VT323', monospace; 
+	padding-bottom: 10px;
+}
+
+#line { 
+	position: relative; 
+	right: 0; 
+	bottom: 0; 
+	left: 0; 
+	height: 10px; 
+	width: 100%; 
+	background-color: #565656;
+}
+#footer {
+	position: absolute;
+	right: 0;
+	bottom: 1;
+	left: 0;
+	height: 80px;
+	width: 100%;
+	background-color: #4D4D4D;
+}
+
+
+.button {
+	position: relative;
+	width: 20%;
+	height: 40px;
+	background-color: #2D2D2D;
+	border-radius: 20px;
+	
+}
+
+.buttonInner {
+	position: relative;
+	margin: 0 auto;
+
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 30px;
+	text-align: center;
+	/*text-shadow: 2px 2px #000000;*/
+
+	background-color: #901515;
+	color: #D4B16A;
+
+	top: 0;
+	width: 80%;
+	height: inherit;
+
+	border-radius: 20px;
+}
+
+.buttonInner:hover {
+	background-color: #f22626;
+	cursor: pointer;
+}
+
+td {
+	padding: 1px;
+	color: #D4B16A;
+}
+
+@font-face {
+	font-family: titleFont;
+	src: url('fonts/Tepeno Sans Regular.ttf');
+}
