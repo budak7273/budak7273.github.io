@@ -33,7 +33,7 @@ var uiConfig = {
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
-      return true; //do redirect
+      return false; //don't redirect
     },
     uiShown: function() {
       // The widget is rendered.
@@ -43,7 +43,7 @@ var uiConfig = {
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: 'admin/index.html',
+  signInSuccessUrl: '<url-to-redirect-to-on-success>',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -54,9 +54,9 @@ var uiConfig = {
     //firebase.auth.PhoneAuthProvider.PROVIDER_ID
   ],
   // Terms of service url.
-  //tosUrl: '<your-tos-url>',
+  tosUrl: '<your-tos-url>',
   // Privacy policy url.
-  //privacyPolicyUrl: '<your-privacy-policy-url>'
+  privacyPolicyUrl: '<your-privacy-policy-url>'
 };
 
 
@@ -98,7 +98,13 @@ function loadContent() {
 $(document).ready(function(){
 					loadContent(); 
 					$(".buttonInner").click(loadContent());
-					ui.start('#firebaseui-auth-container', uiConfig);
+					ui.start('#firebaseui-auth-container', {
+					  signInOptions: [
+						firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+						firebase.auth.EmailAuthProvider.PROVIDER_ID
+					  ],
+					  // Other config options...
+					});
 					$("#loader").hide();
 });
 
