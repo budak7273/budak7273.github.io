@@ -97,14 +97,25 @@ function loadContent() {
 
 $(document).ready(function(){
 					loadContent(); 
-					$(".buttonInner").click(loadContent());
-					ui.start('#firebaseui-auth-container', {
+					//$(".buttonInner").click(loadContent());
+					/*ui.start('#firebaseui-auth-container', {
 					  signInOptions: [
 						firebase.auth.GoogleAuthProvider.PROVIDER_ID,
 						firebase.auth.EmailAuthProvider.PROVIDER_ID
 					  ],
 					  // Other config options...
-					});
+					});*/
 					$("#loader").hide();
+					$("#submitButton").click(function() {
+						alert("Button clicked\n" + $("#dbaseKeyPath").val() + "\n" + $("#dbaseVal").val());
+						try {
+							rootRef.child($("#dbaseKeyPath").val()).set($("#dbaseVal").val());
+						} catch (err) {
+							alert("error: " + err.message);
+						}						
+					});
 });
+
+
+
 

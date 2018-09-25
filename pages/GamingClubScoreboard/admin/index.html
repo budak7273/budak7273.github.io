@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <!--style="background-color: #D3D3D3;"-->
   <head>
-    <title>Gaming Club Scoreboard ADMIN PAGE TEMP</title>
+    <title>Gaming Club Scoreboard ADMIN PAGE</title>
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
     <link rel="stylesheet" type="text/css" href="style.css">
 	
@@ -107,7 +107,12 @@
     </div>
     <div id="divider"></div>
 	<!--<h1>Login Area</h1>-->
-	<div id="firebaseui-auth-container"></div>
-	<div id="loader">Loading...</div>
+	<!--<div id="firebaseui-auth-container"></div>
+	<div id="loader">Loading...</div>-->
+	<center>
+		KeyPath: <input type="text" id="dbaseKeyPath" value="leaderboarddata/place1"> <i>ex. leaderboarddata/place1</i> <br> 
+		Value: <input type="text" id="dbaseVal" value="John Smith"> <i>ex. John Smith</i> <br>
+		<button class="buttonInner" id="submitButton">Submit to Database</button>
+</center>
   </body>
 </html>
