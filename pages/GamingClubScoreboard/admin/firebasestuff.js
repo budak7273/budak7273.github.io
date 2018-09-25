@@ -107,7 +107,7 @@ $(document).ready(function(){
 					});*/
 					$("#loader").hide();
 					$("#submitButton").click(function() {
-						alert("Button clicked\n" + $("#dbaseKeyPath").val() + "\n" + $("#dbaseVal").val());
+						//alert("Button clicked\n" + $("#dbaseKeyPath").val() + "\n" + $("#dbaseVal").val());
 						try {
 							rootRef.child($("#dbaseKeyPath").val()).set($("#dbaseVal").val());
 						} catch (err) {
