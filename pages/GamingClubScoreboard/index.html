@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <!--style="background-color: #D3D3D3;"-->
+<html>
   <head>
     <title>Gaming Club Scoreboard</title>
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
@@ -15,18 +15,6 @@
 	<script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
 	
-	<!--<script>
-	  // Initialize Firebase
-	  var config = {
-		apiKey: "AIzaSyAReBR16X7iW7h-fHutiC_5on66_vhKKQM",
-		authDomain: "mobileappsscoreboard.firebaseapp.com",
-		databaseURL: "https://mobileappsscoreboard.firebaseio.com",
-		projectId: "mobileappsscoreboard",
-		storageBucket: "mobileappsscoreboard.appspot.com",
-		messagingSenderId: "173914236267"
-	  };
-	  firebase.initializeApp(config);
-	</script> -->
 	<script src="firebasestuff.js" language="javascript"></script>
   </head>
   <body>
@@ -35,12 +23,9 @@
         <table>
           <tr>
             <td><span id="lblInputType">Scoreboard</span></td>
-            <!--<td><input type="text" id="testTotal" style="width: 40px; font-size: 20px;"></td>-->
           </tr>
-
         </table>
         <span id="lblInputType2"><center><i>This scoreboard auto-updates.</i></center></span>
-        <!--<div class="button"><div class="buttonInner">Refresh</div></div>-->
       </center>
       <center>
         <table>
@@ -106,7 +91,7 @@
       <br><br><br><br>
     </div>
     <div id="divider"></div>
-	<!--<h1>Login Area</h1>-->
+	<center><h1 class="loginHeader">Staff Login</h1></center>
 	<div id="firebaseui-auth-container"></div>
 	<div id="loader">Loading...</div>
   </body>

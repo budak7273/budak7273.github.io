@@ -1,0 +1,6 @@
+I've shared the project with you on Firebase so you can look at the rules. https://console.firebase.google.com/project/mobileappsscoreboard/overview
+
+Currently the database rules are set up to accept anyone writing to the scoreboard with put a in place but never contacted auth system (the auth check short circuits)
+
+If you have any questions, please don't hesitate to ask.
+

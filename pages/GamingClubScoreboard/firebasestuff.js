@@ -90,7 +90,6 @@ function loadContent() {
 	
 	$(".score").each(function(index){
 		attachPlaceListener(index + 1);
-		//$(this).text(getPlace(index + 1));
 	  });
 
 }

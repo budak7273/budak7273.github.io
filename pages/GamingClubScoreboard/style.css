@@ -114,3 +114,8 @@ td {
 	font-family: titleFont;
 	src: url('fonts/Tepeno Sans Regular.ttf');
 }
+
+.loginHeader {
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 32px; color:#2D2D2D 
+}
