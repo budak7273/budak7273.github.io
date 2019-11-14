@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>Countdown to X</title>
+	<meta name="description" content="Countdown to a instant in time specified in the URL"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- for favicons -->
+	<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/favicons/site.webmanifest">
+	<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<!-- end for favicons -->
+</head>
+<body>
+
+	<!--Dependencies for bootstrap datetimepicker from https://www.solodev.com/blog/web-design/adding-a-datetime-picker-to-your-forms.stml since all the others I found wouldn't work-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!--end from solodev-->
+
+	<div class="jumbotron text-center">
+		<h1 id="countdownTime">Countdown</h1>
+		<p id="longFormMessage">Time until X</p> 
+	</div>
+	
+	<center id="debugDiff" style="color:red; visibility:hidden;">debug</center>
+	
+	<div class="container">
+		<div class="row">
+			<div class='col-sm-6'>
+				<div class="form-group">
+					<div class='input-group date' id='datetimepicker1'>
+						<input type='text' class="form-control" />
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-6'>
+				<span class="input-group-addon">
+					<script>
+						function loadNewPage() {
+							//set up like this so it still works offline on file path addresses
+							var current = window.location.href;
+							var chosenDate = 0 + $("#datetimepicker1").data("DateTimePicker").date(); //this was such an absolute bother to find docs on how to do. all of the docs say to use .data("datetimepicker") (doesn't work) and .getDate() (doesn't exist)
+							var newLink = current.replace(new RegExp("\\?instant=\\d*"), "?instant=" + chosenDate);
+							
+							open(newLink,'_self')
+						}
+					</script>
+					<a class="button" href="javascript:void(loadNewPage());">Start a Countdown!</a>
+				</span>
+			</div>
+			<script type="text/javascript">
+				//start datetimepicker internal scripts
+				$(function () {
+					$('#datetimepicker1').datetimepicker();
+				 });
+			</script>
+		</div>
+	</div>
+	
+	
+	<script>
+		
+		//URL parameter reading from https://html-online.com/articles/get-url-parameters-javascript/
+		function getUrlVars() {
+			var vars = {};
+			var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+				vars[key] = value;
+			});
+			return vars;
+		}
+		
+		function getUrlParam(parameter, defaultvalue){
+			var urlparameter = defaultvalue;
+			if(window.location.href.indexOf(parameter) > -1) {
+				urlparameter = getUrlVars()[parameter];
+				}
+			return urlparameter;
+		}
+		//end from html-online
+		
+		//javascript sleep implementation from https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+		function sleep(ms) {
+		  return new Promise(resolve => setTimeout(resolve, ms));
+		}
+		//end from stackoverflow
+		
+		//method to redraw the page. purposely an infinite loop.
+		//is async so the sleep method can be used
+		async function updateTimeElementLoop(instantInTime) {
+			while(true)
+				{
+					var alreadyHappened = false; //time since or time until. unused but will probably use in the future for custom coloring or something?
+					var differenceMS = instantInTime - Date.now();
+					document.getElementById('debugDiff').innerHTML = differenceMS; //update debug viewer for difference
+					var message = "";
+					var longFormMessage = "until ";
+					
+					if(differenceMS < 0) {
+						//happened in the past, change message accordingly and abs the difference so the format method works
+						differenceMS = Math.abs(differenceMS);
+						alreadyHappened = true;
+						longFormMessage = "since "
+					}
+					
+					//display full message
+					longFormMessage += new Date(instantInTime).toString() + " (" + goalTime + ")"
+					document.getElementById('longFormMessage').innerHTML = longFormMessage;
+					
+					
+					function determinePlural(value, phrase, pluralizer) {
+						message += " " + value + " " + phrase
+						if(value != 1)
+							message += pluralizer;
+					}
+					
+					//format dhms from milliseconds
+					var differenceSeconds = differenceMS / 1000;
+					var differenceDays = Math.floor(differenceSeconds / 60 / 60 / 24);
+					if(differenceDays > 0) {
+						differenceSeconds -= differenceDays * 24 * 60 * 60;
+						determinePlural(differenceDays, "day", "s");
+					}
+					var differenceHours = Math.floor(differenceSeconds / 60 / 60);
+					if(differenceHours > 0) {
+						differenceSeconds -= differenceHours * 60 * 60;
+						determinePlural(differenceHours, "hour", "s");
+					}
+					var differenceMinutes = Math.floor(differenceSeconds / 60);
+					if(differenceMinutes > 0) {
+						differenceSeconds -= differenceMinutes * 60;
+						determinePlural(differenceMinutes, "minute", "s");
+					}
+					var differenceSeconds = Math.floor(differenceSeconds);
+					if(differenceSeconds > 0) {
+						determinePlural(differenceSeconds, "second", "s");
+					}
+					
+					document.getElementById('countdownTime').innerHTML = message;
+					
+					await sleep (500); //faster interval than 1 second so that if the thread gets slightly delayed from actual time it doesn't matter (as much) and will be harder to notice
+				}
+		}
+		
+		//start of execution
+		
+		//get ms value to count down to/from from URL params
+		var goalTime = parseInt(getUrlParam("instant", -1));
+		if(goalTime == -1)
+			//alert("Invalid time parameter");
+			//redirect to a 5 minute timer as a demo
+			//note: this will fail if any other parameters are present, but it won't cause an infinite loop, so no worries
+			open(window.location.href + "?instant=" + (Date.now() + 5 * 60000), '_self');
+		else {
+			//start the countdown loop
+			updateTimeElementLoop(new Date(goalTime));
+		}
+	</script>
+	<noscript>This page requires JavaScript to run.</noscript>
+	
+</body>
